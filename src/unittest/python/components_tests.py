@@ -237,7 +237,7 @@ class HostTests(unittest.TestCase):
 services:
 - backend-service:
     state: $backend_service_state
-    service_artefact: yit-backend-service
+    service_artefact: [yit-backend-service]
     needs_services: ['service://foo/bar']
 """
         data = yaml.load(data_text, Loader=yaml.Loader)
@@ -245,4 +245,4 @@ services:
         host.set_attrs_from_data(data)
         self.assertEqual(len(host.services), 1)
         self.assertTrue("backend-service" in host.services)
-        self.assertEqual(host.services["backend-service"]["service_artefact"], "yit-backend-service")
+        self.assertEqual(host.services["backend-service"]["service_artefact"], ["yit-backend-service"])
