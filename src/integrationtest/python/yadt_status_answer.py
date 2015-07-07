@@ -61,11 +61,11 @@ services:
 - frontend-service:
     needs_services: [backend-service]
     state: $frontend_service_state
-    service_artefact: yit-frontend-service
+    service_artefact: [yit-frontend-service]
     toplevel_artefacts: [yit-config-$host]
 - backend-service:
     state: $backend_service_state
-    service_artefact: yit-backend-service
+    service_artefact: [yit-backend-service]
     toplevel_artefacts: [yit-config-$host]
 artefact_names_handled_by_yadt:
 - yit-frontend-service
@@ -108,7 +108,7 @@ defaults:
 services:
 - backend-service:
     state: $backend_service_state
-    service_artefact: yit-backend-service
+    service_artefact: [yit-backend-service]
     needs_services: ['service://foo/bar']
 artefact_names_handled_by_yadt:
 - yit-frontend-service
@@ -150,11 +150,11 @@ services:
 - frontend-service:
     needs_services: [backend-service]
     state: $frontend_service_state
-    service_artefact: yit-frontend-service
+    service_artefact: [yit-frontend-service]
     toplevel_artefacts: [yit-config-$host]
 - backend-service:
     state: $backend_service_state
-    service_artefact: yit-backend-service
+    service_artefact: [yit-backend-service]
     toplevel_artefacts: [yit-config-$host]
     needs_artefacts: [yit-config-$host]
 
