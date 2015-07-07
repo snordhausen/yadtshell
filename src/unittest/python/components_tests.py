@@ -245,4 +245,4 @@ services:
         host.set_attrs_from_data(data)
         self.assertEqual(len(host.services), 1)
         self.assertTrue("backend-service" in host.services)
-        self.assertTrue(host.services["backend-service"]["service_artefact"], "yit-backend-service")
+        self.assertEqual(host.services["backend-service"]["service_artefact"], "yit-backend-service")
