@@ -368,6 +368,10 @@ status:   0%   0% | 0/0 services up, 0/1 hosts uptodate
 
 class ValidateHighlightingTests(unittest.TestCase):
 
+    def test_should_highlight_when_text_longer_than_reference(self):
+        text = highlight_differences("foo", "foo-123")
+        self.assertEqual("foo${REVERSE}-123${NORMAL}", text)
+
     def test_should_highlight_nothing_when_no_difference(self):
         text = highlight_differences("foo", "foo")
         self.assertEqual("foo", text)

@@ -50,7 +50,7 @@ name = 'yadtshell'
 license = 'GNU GPL v3'
 summary = 'YADT - an Augmented Deployment Tool - The Shell Part'
 url = 'https://github.com/yadt/yadtshell'
-version = '1.9.1'
+version = '1.9.3'
 
 default_task = ['clean', 'analyze', 'publish']
 
@@ -71,8 +71,8 @@ def set_properties(project):
     project.set_property('integrationtest_inherit_environment', True)
 
     project.set_property('flake8_verbose_output', True)
-    project.set_property('flake8_include_test_sources', True)
-    project.set_property('flake8_ignore', 'E501,E402,E731')  # TODO @mriehl fix these
+    project.set_property('flake8_include_test_sources', False)
+    project.set_property('flake8_ignore', 'E501,E402,E731')
     project.set_property('flake8_break_build', True)
 
     FROSTED_BARE_EXCEPT_WARNING = 'W101'
@@ -95,7 +95,7 @@ def set_properties(project):
 
     project.set_property('dir_dist_scripts', 'scripts')
 
-    project.get_property('distutils_commands').append('bdist_egg')
+    project.set_property('distutils_commands', ['sdist'])
     project.set_property('distutils_classifiers', [
         'Development Status :: 4 - Beta',
         'Environment :: Console',
